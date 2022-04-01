@@ -16,6 +16,10 @@ import ProductDetail from "./pages/ProductDetail";
 import ProductAdd from "./pages/ProductAdd";
 import ProductEdit from "./pages/ProductEdit";
 import PrivateRouter from "./components/PrivateRouter";
+import Signin from "./pages/Signin";
+import Signup from "./pages/Signup";
+import List from "./pages/product/List";
+import Main from "./pages/about/Main";
 
 function App() {
   const [products, setProducts] = useState<ProductTye[]>([]);
@@ -45,17 +49,18 @@ function App() {
   };
   return (
     <div className="App">
-      <header>
-      </header>
+      <header></header>
       <main>
         <Routes>
           <Route path="/" element={<WebsiteLayout />}>
             <Route index element={<Home />} />
             <Route path="product">
-              <Route index element={<h1>Hien thi san pham</h1>} />
+              <Route index element={<List />} />
               <Route path=":id" element={<ProductDetail />} />
             </Route>
-            <Route path="about" element={<h1>About page</h1>} />
+            <Route path="about" element={<Main />} />
+            <Route path="signup" element={<Signup />} />
+            <Route path="signin" element={<Signin />} />
           </Route>
 
           <Route
@@ -86,6 +91,7 @@ function App() {
                 element={<ProductAdd name="" onAdd={onHandleAdd} />}
               />
             </Route>
+            <Route path="users" />
           </Route>
         </Routes>
       </main>
